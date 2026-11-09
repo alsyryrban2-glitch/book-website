@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبتي الرقمية - أفضل الكتب</title>
+    <style>
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+    .hero-section {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        text-align: center;
+        padding: 80px 20px;
+        margin-bottom: 40px;
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+        margin-bottom: 25px;
+        opacity: 0.9;
+    }
+
+    .hero-btn {
+        display: inline-block;
+        background-color: #e74c3c;
+        color: white;
+        padding: 12px 30px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .hero-btn:hover {
+        background-color: #c0392b;
+        transform: translateY(-2px);
+    }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .book-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 250px;
+            padding: 15px;
+            text-align: center;
+        }
+        .book-card img {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .book-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0 5px;
+        }
+        .book-author {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 40px;
+        }/* تنسيق القائمة المنسدلة للكتب */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #2c3e50;
+        min-width: 160px;
+        list-style: none;
+        padding: 10px 0;
+        margin: 0;
+        border-radius: 5px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        z-index: 1000;
+        flex-direction: column;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: flex;
+    }
+
+    .dropdown-menu li a {
+        padding: 8px 15px;
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .dropdown-menu li a:hover {
+        background-color: #34495e;
+    }
+        /* تنسيق شريط التنقل */
+        .navbar {
+            background-color: #2c3e50;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .logo {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .navbar ul li a:hover {
+            color: #3498db;
+        }
+        /* --- تنسيقات قسم من نحن --- */
+.about-section {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  direction: rtl;
+}
+
+.about-section h2 {
+  font-size: 2.2rem;
+  color: #1a2a40;
+  margin-bottom: 10px;
+}
+
+.about-section .subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.about-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-content > p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.features-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  color: #1a2a40;
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+/* --- تنسيقات قسم اتصل بنا --- */
+.contact-section {
+  padding: 60px 20px;
+  background-color: #ffffff;
+  text-align: center;
+  direction: rtl;
+}
+
+.contact-section h2 {
+  font-size: 2.2rem;
+  color: #1a2a40;
+  margin-bottom: 10px;
+}
+
+.contact-section .subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.contact-box {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contact-box > p {
+  color: #444;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.info-item {
+  font-size: 1.1rem;
+  color: #1a2a40;
+  font-weight: bold;
+}/* --- تنسيقات زر العودة لأعلى الصفحة --- */
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #1a2a40;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+  z-index: 1000;
+}
+
+#backToTop:hover {
+  background-color: #3b5998;
+}
+  .book-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 10px 0;
+  line-height: 1.5;
+}
+.explore-btn {
+  display: inline-block;
+  background-color: #ff6b6b;
+  color: #ffffff;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: background-color 0.3s;
+}
+
+.explore-btn:hover {
+  background-color: #ff5252;
+}
+    </style>
+</head>
+<body>
+
+    <!-- كود شريط التنقل -->
+    <nav class="navbar">
+        <div class="logo">مكتبتي الرقمية</div>
+        <ul>
+            <li><a href="#">الرئيسية</a></li>
+<li class="dropdown">
+    <a href="#">الكتب ▾</a>
+    <ul class="dropdown-menu">
+        <li><a href="#novel">روايات وقصص</a></li>
+        <li><a href="#science">علميه وثقافيه</a></li>
+        <li><a href="#religion">دينيه</a></li>
+    </ul>
+</li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+    </nav>
+<header class="hero-section">
+    <div class="hero-content">
+        <h1>مرحباً بك في عالم المعرفة</h1>
+        <p>اكتشف مجموعة واسعة من أفضل الكتب والروايات الرقمية.</p>
+        <a href="#novel" class="explore-btn">استكشف الكتب الآن</a>
+    </div>
+</header>
+<section class="about-section" id="about">
+  <div class="container">
+    <h2>من نحن</h2>
+    <p class="subtitle">وجهتك الرقمية الأولى لاكتشاف وتصفح الكتب والروايات</p>
+    
+    <div class="about-content">
+      <p>
+        مرحباً بك في موقعنا! نحن منصة إلكترونية تهدف إلى تسهيل الوصول إلى المعرفة ونشر شغف القراءة. 
+        نوفر مجموعة متنوعة من الكتب الإلكترونية والروايات في مختلف المجالات لتلبي تطلعات جميع القراء.
+      </p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>📚 تنوع وثراء</h3>
+          <p>نجمع لك أحدث الكتب والروايات والكتب العلمية والثقافية في مكان واحد.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3>⚡ سهولة الوصول</h3>
+          <p>تصفح سريع وسلس من مختلف الأجهزة في أي وقت وأي مكان.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3>💡 نشر المعرفة</h3>
+          <p>نسعى لبناء مجتمع قارئ يساهم في إثراء المحتوى العربي الرقمي.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="contact-section" id="contact">
+  <div class="container">
+    <h2>اتصل بنا</h2>
+    <p class="subtitle">نسعد بتواصلكم واستفساراتكم دائماً</p>
+    
+    <div class="contact-box">
+      <p>إذا كانت لديك أي اقتراحات، أو تواجه مشكلة في الموقع، أو رغبة في إضافة كتاب جديد، لا تتردد في مراسلتنا:</p>
+      
+      <div class="contact-info">
+        <div class="info-item">
+          <span>📧 البريد الإلكتروني:</span> info@bookwebsite.com
+        </div>
+        <div class="info-item">
+          <span>📱 الهاتف:</span> +966 512345678
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- الكتاب الأول -->
+  <div class="book-card" id="novel">
+    <img src="book.jpeg" alt="الخيميائي">
+    <div class="book-title">الخيميائي</div>
+    <div class="book-author">المؤلف: باولو كويلو</div>
+    <p class="book-desc">رواية عالمية تدور حول راعٍ أندلسي شاب يخوض رحلة للبحث عن كنز مادي ومعنوي.</p>
+    <a href="#" class="btn">تحميل الكتاب</a>
+  </div>
+
+  <!-- الكتاب الثاني -->
+  <div class="book-card" id="science">
+    <img src="book2.jpeg" alt="تاريخ موجز للزمان">
+    <div class="book-title">تاريخ موجز للزمان</div>
+    <div class="book-author">المؤلف: ستيفن هوكينج</div>
+    <p class="book-desc">كتاب فيزيائي مبسط يتناول نشأة الكون، الانفجار العظيم، والثقوب السوداء.</p>
+    <a href="#" class="btn">تحميل الكتاب</a>
+  </div>
+
+  <!-- الكتاب الثالث -->
+  <div class="book-card" id="religion">
+    <img src="book3.jpeg" alt="صيد الخاطر">
+    <div class="book-title">صيد الخاطر</div>
+    <div class="book-author">المؤلف: ابن الجوزي</div>
+    <p class="book-desc">كتاب يضم خواطر وتأملات تربوية واجتماعية ودينية لتوجيه النفس.</p>
+    <a href="#" class="btn">تحميل الكتاب</a>
+  </div>
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026</p>
+    </footer>
+    <a href="#" id="backToTop" title="العودة لأعلى الصفحة">↑</a>
+<script>
+  // كود العودة لأعلى الصفحة بسلاسة
+  document.getElementById('backToTop').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+</body>
+</html>
